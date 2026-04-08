@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Contact Us | Xrace Technologies</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* Custom Contact Form (in addition to Google Form) */
+    .cform { display:flex;flex-direction:column;gap:1.2rem; }
+    .cform-row { display:grid;grid-template-columns:1fr 1fr;gap:1rem; }
+    .cfield { display:flex;flex-direction:column;gap:0.4rem; }
+    .cfield label { font-family:var(--font-head);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--text-muted); }
+    .cfield input,.cfield select,.cfield textarea {
+      background:var(--bg-card2);border:1px solid var(--border);
+      border-radius:var(--radius);padding:13px 16px;
+      color:var(--text);font-family:var(--font-body);font-size:1rem;
+      outline:none;transition:var(--transition);
+    }
+    .cfield input:focus,.cfield select:focus,.cfield textarea:focus {
+      border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,200,255,0.1);
+    }
+    .cfield select option { background:var(--bg-dark); }
+    .cfield textarea { resize:vertical;min-height:130px; }
+    .cform-submit { margin-top:0.5rem; }
+    .success-msg {
+      display:none;background:rgba(0,255,136,0.08);border:1px solid var(--accent3);
+      border-radius:8px;padding:1.2rem;text-align:center;
+      color:var(--accent3);font-family:var(--font-head);font-size:0.9rem;letter-spacing:2px;
+    }
+
+    /* Tab switcher for forms */
+    .form-tabs { display:flex;gap:0.5rem;margin-bottom:0;border-bottom:1px solid var(--border); }
+    .form-tab {
+      font-family:var(--font-head);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;
+      padding:12px 20px;background:transparent;border:none;border-bottom:2px solid transparent;
+      color:var(--text-muted);cursor:pointer;transition:var(--transition);
+    }
+    .form-tab.active { color:var(--accent);border-bottom-color:var(--accent); }
+    .form-panel { display:none;padding:1.5rem 0 0; }
+    .form-panel.active { display:block; }
+
+    @media(max-width:640px){ .cform-row{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-logo"><span>X</span>RACE TECHNOLOGIES</div>
+  <div class="pre-bar-wrap"><div class="pre-bar"></div></div>
+  <div class="pre-text">LOADING...</div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand" style="text-decoration:none">
+    <span class="logo-x">X</span><span class="logo-race">RACE</span><span class="logo-tech">TECHNOLOGIES</span>
+  </a>
+  <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="gallery.html">Gallery</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="page-hero-tag">// Get In Touch</p>
+  <h1>Contact <span class="accent">Us</span></h1>
+  <p>Ready to start your IT journey? Reach out and our team will respond within 24 hours.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section>
+  <div class="contact-layout">
+
+    <!-- LEFT: Info -->
+    <div class="contact-info reveal">
+      <h2>Let's Start a <span class="accent">Conversation</span></h2>
+      <p>Whether you need a new website, software solution, IT training, CCTV installation, or just have a question — we'd love to hear from you. Fill out the form or contact us directly.</p>
+
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <div class="info-card-label">Our Office</div>
+            <div class="info-card-value">Office No. 1, Radha Heights,<br/>Near HP Petrol Pump,<br/>Ravet-Aundh Road, Thathavde,<br/>Pune, Maharashtra</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-phone"></i></div>
+          <div>
+            <div class="info-card-label">Phone / WhatsApp</div>
+            <div class="info-card-value"><a href="tel:8007255573">+91 8007255573</a></div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div class="info-card-label">Email</div>
+            <div class="info-card-value"><a href="mailto:info@xracetechnologies.com">info@xracetechnologies.com</a></div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <div class="info-card-label">Working Hours</div>
+            <div class="info-card-value">Monday – Saturday<br/>9:00 AM – 7:00 PM IST</div>
+          </div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon"><i class="fas fa-user-tie"></i></div>
+          <div>
+            <div class="info-card-label">CEO / Founder</div>
+            <div class="info-card-value">Yogesh Patil<br/><a href="tel:8007255573">+91 8007255573</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:1.5rem;">
+        <div style="font-family:var(--font-head);font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:0.8rem;">Follow Us</div>
+        <div style="display:flex;gap:10px;">
+          <a href="#" class="social-btn" style="width:44px;height:44px;"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-btn" style="width:44px;height:44px;"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-btn" style="width:44px;height:44px;"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-btn" style="width:44px;height:44px;"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-btn" style="width:44px;height:44px;"><i class="fab fa-youtube"></i></a>
+          <a href="https://wa.me/918007255573" class="social-btn" style="width:44px;height:44px;border-color:rgba(37,211,102,0.3);color:#25d366;"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Forms -->
+    <div class="reveal" style="transition-delay:0.15s;">
+
+      <!-- TAB SWITCHER -->
+      <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
+        <div class="form-tabs" style="padding:0 1.5rem;background:var(--bg-card);">
+          <button class="form-tab active" data-tab="local">Quick Enquiry</button>
+          <button class="form-tab" data-tab="google">Google Form</button>
+        </div>
+
+        <!-- LOCAL FORM -->
+        <div class="form-panel active" id="tab-local" style="padding:1.5rem 2rem 2rem;">
+          <div id="successMsg" class="success-msg">
+            <i class="fas fa-check-circle" style="font-size:1.5rem;margin-bottom:0.5rem;display:block;"></i>
+            Message Sent! We'll get back to you within 24 hours.
+          </div>
+          <form class="cform" id="contactForm" novalidate>
+            <div class="cform-row">
+              <div class="cfield">
+                <label>Full Name *</label>
+                <input type="text" name="name" placeholder="Your name" required/>
+              </div>
+              <div class="cfield">
+                <label>Phone Number *</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required/>
+              </div>
+            </div>
+            <div class="cfield">
+              <label>Email Address *</label>
+              <input type="email" name="email" placeholder="your@email.com" required/>
+            </div>
+            <div class="cfield">
+              <label>Service Interested In</label>
+              <select name="service">
+                <option value="">— Select a Service —</option>
+                <option>Website Development</option>
+                <option>Software Development</option>
+                <option>IT Courses / Training</option>
+                <option>Digital Marketing</option>
+                <option>Cloud Based Solutions</option>
+                <option>Helpdesk Support Service</option>
+                <option>IT Staffing Services</option>
+                <option>CCTV &amp; Computer Hardware</option>
+                <option>Multiple Services</option>
+                <option>Other / General Enquiry</option>
+              </select>
+            </div>
+            <div class="cfield">
+              <label>Your Message *</label>
+              <textarea name="message" placeholder="Tell us about your project or requirement..." required></textarea>
+            </div>
+            <div class="cform-submit">
+              <button type="submit" class="btn-secondary" style="width:100%;justify-content:center;">
+                Send Message &nbsp;<i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- GOOGLE FORM -->
+        <div class="form-panel" id="tab-google" style="padding:0;">
+          <div class="gform-header"><i class="fab fa-google" style="margin-right:8px;"></i> Google Form — Xrace Technologies Enquiry</div>
+          <!-- 
+            INSTRUCTIONS: Replace the src URL below with your actual Google Form embed link.
+            In Google Forms: Click Send → Embed (</>) → Copy the iframe src URL
+            Example: https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true
+          -->
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSf_placeholder_replace_with_your_form_id/viewform?embedded=true"
+            width="100%"
+            height="680"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            style="display:block;background:transparent;"
+            title="Xrace Technologies Contact Form">
+            <!-- Fallback if iframe blocked -->
+            <div style="padding:3rem;text-align:center;color:var(--text-muted);">
+              <i class="fab fa-google" style="font-size:3rem;color:var(--accent);display:block;margin-bottom:1rem;"></i>
+              <p style="margin-bottom:1rem;">Unable to load the Google Form here.</p>
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSf_placeholder/viewform" target="_blank" class="btn-primary">Open Google Form &nbsp;<i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </iframe>
+          <div style="padding:1rem 2rem;background:var(--bg-card);border-top:1px solid var(--border);font-size:0.82rem;color:var(--text-muted);text-align:center;">
+            <i class="fas fa-info-circle" style="color:var(--accent);margin-right:6px;"></i>
+            To replace with your actual Google Form: Go to Google Forms → Send → Embed → copy the URL into this page's source code.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- MAP SECTION -->
+<div class="map-section">
+  <div class="section-header reveal" style="margin-bottom:2rem;">
+    <p class="section-tag">// Find Us</p>
+    <h2>Our <span class="accent">Location</span></h2>
+  </div>
+  <div class="map-wrap reveal" style="transition-delay:.2s">
+    <div class="map-header">
+      <i class="fas fa-map-marker-alt"></i>
+      <span>Xrace Technologies — Office No. 1, Radha Heights, Near HP Petrol Pump, Ravet-Aundh Road, Thathavde, Pune</span>
+    </div>
+    <!-- Google Maps embed for the address -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3781.0!2d73.7667!3d18.6200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTjCsDM3JzEyLjAiTiA3M8KwNDYnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+      width="100%"
+      height="420"
+      style="border:0;display:block;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Xrace Technologies Location">
+    </iframe>
+    <!-- Direct Google Maps link -->
+    <div style="background:var(--bg-card);border-top:1px solid var(--border);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <span style="color:var(--text-muted);font-size:0.9rem;"><i class="fas fa-directions" style="color:var(--accent);margin-right:8px;"></i>Near HP Petrol Pump, Ravet-Aundh Road, Thathavde, Pune, Maharashtra</span>
+      <a href="https://maps.google.com/?q=Ravet+Aundh+Road+Thathavde+Pune" target="_blank" class="btn-primary" style="padding:9px 20px;font-size:0.7rem;">
+        Get Directions &nbsp;<i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section style="padding:0 4rem 6rem;">
+  <div class="section-header reveal" style="margin-bottom:2.5rem;">
+    <p class="section-tag">// FAQ</p>
+    <h2>Frequently Asked <span class="accent">Questions</span></h2>
+  </div>
+  <div style="max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:1rem;">
+    <div class="service-card reveal faq-item" style="cursor:pointer;">
+      <div style="display:flex;justify-content:space-between;align-items:center;" onclick="this.parentElement.classList.toggle('open')">
+        <h3 style="font-size:1rem;margin:0;">How quickly can you start my project?</h3>
+        <i class="fas fa-chevron-down" style="color:var(--accent);transition:var(--transition);"></i>
+      </div>
+      <p style="margin:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease;color:var(--text-muted);">We can typically begin a new project within 3-5 business days of signing an agreement. For urgent projects, we offer expedited timelines — just contact us to discuss your needs.</p>
+    </div>
+    <div class="service-card reveal faq-item" style="cursor:pointer;transition-delay:.1s">
+      <div style="display:flex;justify-content:space-between;align-items:center;" onclick="this.parentElement.classList.toggle('open')">
+        <h3 style="font-size:1rem;margin:0;">Do you serve clients outside Pune?</h3>
+        <i class="fas fa-chevron-down" style="color:var(--accent);transition:var(--transition);"></i>
+      </div>
+      <p style="margin:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease;color:var(--text-muted);">Absolutely! While we're based in Pune, we serve clients across India and internationally. Most of our services — web development, software, cloud, digital marketing, training — can be delivered remotely.</p>
+    </div>
+    <div class="service-card reveal faq-item" style="cursor:pointer;transition-delay:.2s">
+      <div style="display:flex;justify-content:space-between;align-items:center;" onclick="this.parentElement.classList.toggle('open')">
+        <h3 style="font-size:1rem;margin:0;">What is the cost of your services?</h3>
+        <i class="fas fa-chevron-down" style="color:var(--accent);transition:var(--transition);"></i>
+      </div>
+      <p style="margin:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease;color:var(--text-muted);">Our pricing varies by service scope and complexity. We offer competitive, transparent pricing with no hidden fees. Contact us for a free consultation and customized quote for your specific requirements.</p>
+    </div>
+    <div class="service-card reveal faq-item" style="cursor:pointer;transition-delay:.3s">
+      <div style="display:flex;justify-content:space-between;align-items:center;" onclick="this.parentElement.classList.toggle('open')">
+        <h3 style="font-size:1rem;margin:0;">Do you offer post-project support?</h3>
+        <i class="fas fa-chevron-down" style="color:var(--accent);transition:var(--transition);"></i>
+      </div>
+      <p style="margin:0;max-height:0;overflow:hidden;transition:max-height 0.4s ease;color:var(--text-muted);">Yes! We offer Annual Maintenance Contracts (AMC), ongoing support packages, and dedicated helpdesk services. We believe in long-term relationships and are committed to supporting your business beyond project delivery.</p>
+    </div>
+  </div>
+</section>
+
+<div class="contact-strip reveal">
+  <div class="strip-item"><div class="strip-icon"><i class="fas fa-phone-alt"></i></div><div><div class="strip-label">Instant Call</div><div class="strip-value"><a href="tel:8007255573">+91 8007255573</a></div></div></div>
+  <div class="strip-item"><div class="strip-icon"><i class="fab fa-whatsapp" style="color:#25d366;"></i></div><div><div class="strip-label">WhatsApp Us</div><div class="strip-value"><a href="https://wa.me/918007255573" target="_blank">Chat on WhatsApp</a></div></div></div>
+  <div class="strip-item"><div class="strip-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="strip-label">Visit Us</div><div class="strip-value">Radha Heights, Thathavde, Pune</div></div></div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-brand" style="margin-bottom:1rem;display:flex;"><span class="logo-x">X</span><span class="logo-race">RACE</span><span class="logo-tech">TECHNOLOGIES</span></div>
+      <p>Your trusted IT partner for web development, software, cloud, digital marketing, CCTV, training, and more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Software Dev</a></li><li><a href="services.html">IT Courses</a></li><li><a href="services.html">Digital Marketing</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">CCTV &amp; Hardware</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li style="color:var(--text-muted);font-size:.92rem;margin-bottom:.6rem;"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:6px;"></i>Office No. 1, Radha Heights, Near HP Petrol Pump, Ravet-Aundh Road, Thathavde, Pune</li><li><a href="tel:8007255573" style="color:var(--text-muted);text-decoration:none;font-size:.92rem;"><i class="fas fa-phone" style="color:var(--accent);margin-right:6px;"></i>+91 8007255573</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 <span>Xrace Technologies</span>. All Rights Reserved. CEO: Yogesh Patil</div>
+    <div>Designed with <i class="fas fa-heart" style="color:var(--accent);"></i> in Pune, India</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// Tab switcher
+document.querySelectorAll('.form-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.form-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Contact form
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type="submit"]');
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>&nbsp; Sending...';
+  btn.disabled = true;
+  setTimeout(() => {
+    document.getElementById('successMsg').style.display = 'block';
+    this.reset();
+    btn.innerHTML = 'Send Message &nbsp;<i class="fas fa-paper-plane"></i>';
+    btn.disabled = false;
+    setTimeout(() => { document.getElementById('successMsg').style.display = 'none'; }, 5000);
+  }, 1500);
+});
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  const p = item.querySelector('p');
+  const icon = item.querySelector('.fa-chevron-down');
+  item.querySelector('div').addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(fi => {
+      fi.classList.remove('open');
+      fi.querySelector('p').style.maxHeight = '0';
+      fi.querySelector('.fa-chevron-down').style.transform = 'rotate(0)';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      p.style.maxHeight = '200px';
+      p.style.marginTop = '1rem';
+      icon.style.transform = 'rotate(180deg)';
+    }
+  });
+});
+</script>
+</body>
+</html>

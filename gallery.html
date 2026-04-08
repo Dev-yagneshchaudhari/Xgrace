@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Gallery | Xrace Technologies</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    .filter-bar { display:flex;gap:0.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem; }
+    .filter-btn {
+      font-family:var(--font-head);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;
+      padding:9px 22px;border:1px solid var(--border);border-radius:20px;background:transparent;
+      color:var(--text-muted);cursor:pointer;transition:var(--transition);
+    }
+    .filter-btn:hover,.filter-btn.active{ border-color:var(--accent);color:var(--accent);background:rgba(0,200,255,0.08);box-shadow:var(--glow); }
+
+    /* Lightbox */
+    #lightbox {
+      position:fixed;inset:0;z-index:9000;background:rgba(3,8,16,0.96);
+      display:none;align-items:center;justify-content:center;
+      backdrop-filter:blur(10px);
+    }
+    #lightbox.open { display:flex; }
+    .lb-content {
+      background:var(--bg-card);border:1px solid var(--border);border-radius:12px;
+      max-width:700px;width:90%;padding:2.5rem;text-align:center;position:relative;
+      animation:fadeUp 0.3s ease;
+    }
+    .lb-close {
+      position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;
+      background:rgba(0,200,255,0.1);border:1px solid var(--border);
+      color:var(--text-muted);cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;
+      transition:var(--transition);
+    }
+    .lb-close:hover{color:var(--accent);border-color:var(--accent);}
+    .lb-icon { font-size:5rem;color:var(--accent);margin-bottom:1rem; }
+    .lb-title { font-family:var(--font-head);font-size:1.2rem;color:var(--text);margin-bottom:0.5rem; }
+    .lb-desc { color:var(--text-muted);line-height:1.7; }
+    .lb-tag { display:inline-block;background:rgba(0,200,255,0.08);border:1px solid var(--border);color:var(--accent);font-size:0.72rem;padding:3px 12px;border-radius:20px;margin:1rem 0 0;font-family:var(--font-mono); }
+
+    .gallery-grid { gap:1.2rem; }
+    .gallery-item { cursor:pointer; }
+  </style>
+</head>
+<body>
+
+<div id="preloader">
+  <div class="pre-logo"><span>X</span>RACE TECHNOLOGIES</div>
+  <div class="pre-bar-wrap"><div class="pre-bar"></div></div>
+  <div class="pre-text">LOADING...</div>
+</div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-brand" style="text-decoration:none">
+    <span class="logo-x">X</span><span class="logo-race">RACE</span><span class="logo-tech">TECHNOLOGIES</span>
+  </a>
+  <div class="nav-toggle" id="navToggle"><i class="fas fa-bars"></i></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="gallery.html" class="active">Gallery</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="page-hero-tag">// Our Portfolio</p>
+  <h1>Project <span class="accent">Gallery</span></h1>
+  <p>A showcase of our work across web development, CCTV installations, training programs, and IT projects.</p>
+  <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Gallery</span></div>
+</div>
+
+<!-- GALLERY -->
+<section>
+  <div class="section-header reveal" style="margin-bottom:2rem;">
+    <p class="section-tag">// Our Work</p>
+    <h2>Explore Our <span class="accent">Portfolio</span></h2>
+    <p>Click any project to view more details about our work and solutions.</p>
+  </div>
+
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="web">Web Dev</button>
+    <button class="filter-btn" data-filter="software">Software</button>
+    <button class="filter-btn" data-filter="cctv">CCTV</button>
+    <button class="filter-btn" data-filter="training">Training</button>
+    <button class="filter-btn" data-filter="cloud">Cloud</button>
+  </div>
+
+  <div class="gallery-grid reveal">
+
+    <div class="gallery-item wide" data-filter="web" data-title="E-Commerce Portal" data-desc="A full-featured e-commerce platform built for a Pune-based retailer. Includes product management, payment gateway integration, order tracking, and admin dashboard." data-icon="fas fa-shopping-cart" data-tag="Web Development">
+      <div class="gallery-thumb">
+        <i class="fas fa-shopping-cart"></i>
+        <p>E-Commerce Portal</p>
+      </div>
+      <div class="gallery-overlay"><span>E-Commerce Portal → Web Development</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="cctv" data-title="Office CCTV Installation" data-desc="32-camera IP CCTV system installed across a 3-floor commercial complex in Pune. Includes NVR, remote viewing, motion alerts, and night vision coverage." data-icon="fas fa-camera" data-tag="CCTV Solutions">
+      <div class="gallery-thumb">
+        <i class="fas fa-camera"></i>
+        <p>Office CCTV System</p>
+      </div>
+      <div class="gallery-overlay"><span>CCTV Installation → Security</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="software" data-title="HR Management System" data-desc="Custom HR software solution with employee onboarding, attendance tracking, payroll processing, leave management, and performance reviews built for an SME." data-icon="fas fa-users-cog" data-tag="Software Development">
+      <div class="gallery-thumb">
+        <i class="fas fa-users-cog"></i>
+        <p>HR Management System</p>
+      </div>
+      <div class="gallery-overlay"><span>HR Software → Custom Development</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="cloud" data-title="Cloud Migration Project" data-desc="Migrated a mid-size manufacturing company's entire IT infrastructure to AWS. Included data migration, security setup, cost optimization, and 99.9% uptime SLA." data-icon="fas fa-cloud-upload-alt" data-tag="Cloud Solutions">
+      <div class="gallery-thumb">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <p>Cloud Migration — AWS</p>
+      </div>
+      <div class="gallery-overlay"><span>Cloud Migration → AWS</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="training" data-title="Python Programming Batch" data-desc="Successfully completed a 60-day Python programming bootcamp with 45 students. Covered fundamentals to advanced topics including web scraping, data analysis, and API development." data-icon="fab fa-python" data-tag="IT Training">
+      <div class="gallery-thumb">
+        <i class="fab fa-python"></i>
+        <p>Python Bootcamp — 45 Students</p>
+      </div>
+      <div class="gallery-overlay"><span>IT Training → Python Batch</span></div>
+    </div>
+
+    <div class="gallery-item tall" data-filter="web" data-title="Corporate Website Redesign" data-desc="Complete brand and website overhaul for a logistics company. New identity, modern UI, CMS integration, multi-language support, and improved SEO performance." data-icon="fas fa-pen-nib" data-tag="Web Development">
+      <div class="gallery-thumb" style="flex-direction:column;justify-content:center;">
+        <i class="fas fa-pen-nib"></i>
+        <p>Corporate Redesign</p>
+      </div>
+      <div class="gallery-overlay"><span>Website Redesign → Corporate</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="software" data-title="School ERP System" data-desc="Comprehensive school management ERP including student enrollment, fee collection, timetable, attendance, exam management, parent portal and mobile notifications." data-icon="fas fa-school" data-tag="Software Development">
+      <div class="gallery-thumb">
+        <i class="fas fa-school"></i>
+        <p>School ERP System</p>
+      </div>
+      <div class="gallery-overlay"><span>ERP System → Education</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="cctv" data-title="Retail Store Surveillance" data-desc="End-to-end CCTV solution for a chain of 5 retail stores including centralized monitoring, analytics dashboards, theft prevention cameras, and 30-day recording retention." data-icon="fas fa-store" data-tag="CCTV Solutions">
+      <div class="gallery-thumb">
+        <i class="fas fa-store"></i>
+        <p>Retail Surveillance Network</p>
+      </div>
+      <div class="gallery-overlay"><span>Retail CCTV → Multi-Store</span></div>
+    </div>
+
+    <div class="gallery-item wide" data-filter="training" data-title="Digital Marketing Workshop" data-desc="Two-day intensive digital marketing workshop attended by 80+ marketing professionals. Covered Google Ads, Meta Ads, SEO, content strategy, and analytics." data-icon="fas fa-chart-bar" data-tag="IT Training">
+      <div class="gallery-thumb">
+        <i class="fas fa-chart-bar"></i>
+        <p>Digital Marketing Workshop — 80+ Attendees</p>
+      </div>
+      <div class="gallery-overlay"><span>Marketing Workshop → Training Event</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="cloud" data-title="Cloud Backup Solution" data-desc="Implemented automated cloud backup and disaster recovery system for a financial services firm. Zero data loss guarantee with 4-hour recovery time objective." data-icon="fas fa-shield-alt" data-tag="Cloud Solutions">
+      <div class="gallery-thumb">
+        <i class="fas fa-shield-alt"></i>
+        <p>Cloud DR &amp; Backup</p>
+      </div>
+      <div class="gallery-overlay"><span>Cloud Backup → Disaster Recovery</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="web" data-title="Restaurant Ordering App" data-desc="Web and mobile ordering system for a restaurant group with table QR codes, digital menu, kitchen display system, and POS integration." data-icon="fas fa-utensils" data-tag="Web Development">
+      <div class="gallery-thumb">
+        <i class="fas fa-utensils"></i>
+        <p>Restaurant Ordering System</p>
+      </div>
+      <div class="gallery-overlay"><span>Restaurant App → Full Stack</span></div>
+    </div>
+
+    <div class="gallery-item" data-filter="software" data-title="Inventory Management" data-desc="Real-time inventory management system with barcode scanning, auto reorder triggers, supplier management, and reporting for a wholesale distributor." data-icon="fas fa-boxes" data-tag="Software Development">
+      <div class="gallery-thumb">
+        <i class="fas fa-boxes"></i>
+        <p>Inventory Management</p>
+      </div>
+      <div class="gallery-overlay"><span>Inventory System → Wholesale</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox">
+  <div class="lb-content">
+    <button class="lb-close" id="lbClose"><i class="fas fa-times"></i></button>
+    <div class="lb-icon" id="lbIcon"></div>
+    <div class="lb-title" id="lbTitle"></div>
+    <div class="lb-desc" id="lbDesc"></div>
+    <div class="lb-tag" id="lbTag"></div>
+    <div style="margin-top:1.5rem;">
+      <a href="contact.html" class="btn-primary" style="margin-top:0;">Enquire About This Service &nbsp;<i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENTS -->
+<section class="features-section">
+  <div class="section-header reveal">
+    <p class="section-tag">// Happy Clients</p>
+    <h2>Trusted By <span class="accent">Businesses</span></h2>
+    <p>From startups to established enterprises, Xrace Technologies has delivered results for clients across industries.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;max-width:1000px;margin:0 auto;">
+    <div class="service-card reveal" style="text-align:center;padding:1.5rem 1rem;"><i class="fas fa-industry" style="font-size:1.8rem;color:var(--accent);display:block;margin-bottom:0.5rem;"></i><span style="font-size:0.85rem;color:var(--text-muted);">Manufacturing</span></div>
+    <div class="service-card reveal" style="text-align:center;padding:1.5rem 1rem;transition-delay:.05s"><i class="fas fa-hospital" style="font-size:1.8rem;color:var(--accent);display:block;margin-bottom:0.5rem;"></i><span style="font-size:0.85rem;color:var(--text-muted);">Healthcare</span></div>
+    <div class="service-card reveal" style="text-align:center;padding:1.5rem 1rem;transition-delay:.1s"><i class="fas fa-graduation-cap" style="font-size:1.8rem;color:var(--accent);display:block;margin-bottom:0.5rem;"></i><span style="font-size:0.85rem;color:var(--text-muted);">Education</span></div>
+    <div class="service-card reveal" style="text-align:center;padding:1.5rem 1rem;transition-delay:.15s"><i class="fas fa-store" style="font-size:1.8rem;color:var(--accent);display:block;margin-bottom:0.5rem;"></i><span style="font-size:0.85rem;color:var(--text-muted);">Retail</span></div>
+    <div class="service-card reveal" style="text-align:center;padding:1.5rem 1rem;transition-delay:.2s"><i class="fas fa-truck" style="font-size:1.8rem;color:var(--accent);display:block;margin-bottom:0.5rem;"></i><span style="font-size:0.85rem;color:var(--text-muted);">Logistics</span></div>
+    <div class="service-card reveal" style="text-align:center;padding:1.5rem 1rem;transition-delay:.25s"><i class="fas fa-landmark" style="font-size:1.8rem;color:var(--accent);display:block;margin-bottom:0.5rem;"></i><span style="font-size:0.85rem;color:var(--text-muted);">Finance</span></div>
+  </div>
+</section>
+
+<div class="contact-strip reveal">
+  <div class="strip-item"><div class="strip-icon"><i class="fas fa-phone"></i></div><div><div class="strip-label">Call Us</div><div class="strip-value"><a href="tel:8007255573">+91 8007255573</a></div></div></div>
+  <div class="strip-item"><div class="strip-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="strip-label">Office</div><div class="strip-value">Radha Heights, Ravet-Aundh Road, Thathavde, Pune</div></div></div>
+  <div class="strip-item"><a href="contact.html" class="btn-primary">Start a Project &nbsp;<i class="fas fa-arrow-right"></i></a></div>
+</div>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-brand" style="margin-bottom:1rem;display:flex;"><span class="logo-x">X</span><span class="logo-race">RACE</span><span class="logo-tech">TECHNOLOGIES</span></div>
+      <p>Your trusted IT partner for web development, software, cloud, digital marketing, CCTV, training, and more.</p>
+      <div class="footer-social">
+        <a href="#" class="social-btn"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="social-btn"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="services.html">Services</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+    <div class="footer-col"><h4>Services</h4><ul><li><a href="services.html">Web Development</a></li><li><a href="services.html">Software Dev</a></li><li><a href="services.html">IT Courses</a></li><li><a href="services.html">Digital Marketing</a></li><li><a href="services.html">Cloud Solutions</a></li><li><a href="services.html">CCTV &amp; Hardware</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><ul><li style="color:var(--text-muted);font-size:.92rem;margin-bottom:.6rem;"><i class="fas fa-map-marker-alt" style="color:var(--accent);margin-right:6px;"></i>Office No. 1, Radha Heights, Thathavde, Pune</li><li><a href="tel:8007255573" style="color:var(--text-muted);text-decoration:none;font-size:.92rem;"><i class="fas fa-phone" style="color:var(--accent);margin-right:6px;"></i>+91 8007255573</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 <span>Xrace Technologies</span>. All Rights Reserved. CEO: Yogesh Patil</div>
+    <div>Designed with <i class="fas fa-heart" style="color:var(--accent);"></i> in Pune, India</div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+// Filter
+const filterBtns = document.querySelectorAll('.filter-btn');
+const galleryItems = document.querySelectorAll('.gallery-item');
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    galleryItems.forEach(item => {
+      if (f === 'all' || item.dataset.filter === f) {
+        item.style.display = '';
+        item.style.opacity = '0';
+        setTimeout(() => { item.style.opacity = '1'; item.style.transition = 'opacity 0.4s'; }, 50);
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// Lightbox
+const lb = document.getElementById('lightbox');
+const lbClose = document.getElementById('lbClose');
+galleryItems.forEach(item => {
+  item.addEventListener('click', () => {
+    document.getElementById('lbIcon').innerHTML = `<i class="${item.dataset.icon}"></i>`;
+    document.getElementById('lbTitle').textContent = item.dataset.title;
+    document.getElementById('lbDesc').textContent = item.dataset.desc;
+    document.getElementById('lbTag').textContent = item.dataset.tag;
+    lb.classList.add('open');
+  });
+});
+lbClose.addEventListener('click', () => lb.classList.remove('open'));
+lb.addEventListener('click', (e) => { if (e.target === lb) lb.classList.remove('open'); });
+</script>
+</body>
+</html>
